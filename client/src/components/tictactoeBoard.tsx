@@ -9,7 +9,7 @@ type Props = {
     setXTurn: Function
 }
 
-const TictactoBoard = (props: Props) => {
+const TictactoeBoard = (props: Props) => {
     const {xTurn, setXTurn, setWinner, winner, boardSize} = props;
     const [board, setBoard] = useState<(XorO | undefined)[][]>([
         [undefined, undefined, undefined],
@@ -125,4 +125,4 @@ const TictactoBoard = (props: Props) => {
     )
 }
 
-export default TictactoBoard;
+export default TictactoeBoard;
