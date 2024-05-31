@@ -1,0 +1,44 @@
+version: '3.5'
+services:
+  postgres:
+    container_name: tik-tak-to-db
+    restart: always
+    image: postgres:9.6.9
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    container_name: tik-tak-to-app
+    depends_on: 
+      - postgres
+    restart: always
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/code
+    env_file:
+      - ./client/.env  
+    command: npm start
+  api:
+    container_name: tik-tak-to-server
+    depends_on: 
+      - postgres
+    restart: always
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "2000:2000"
+    volumes:
+      - .:/code
+    env_file:
+      - ./server/.env  
+    command: npm run dev
+
