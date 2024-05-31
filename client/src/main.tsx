@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
-import { XorO } from './types'
+import React, { useState } from "react";
+import TictactoBoard from "./components/tictactoBoard";
+import { XorO } from "./types";
+
 
 
 export const Main = () => {
-  const [board, setBoard] = useState<(XorO | undefined)[][]>([
-    [undefined, undefined, undefined],
-    [undefined, undefined, undefined],
-    [undefined, undefined, undefined]
-  ])
-
-  return <div className='flex flex-col mt-10 items-center gap-10'>
-    <div className='font-bold text-2xl'>Tic Tac Toe</div>
-    <div className='flex flex-col gap-1'>
-      {board.map(row => <div className='flex gap-1'>
-        {row.map(column => <div className='border-2 border-gray-900 w-10 h-10 cursor-pointer items-center justify-center text-2xl font-bold flex'>
-          {column}
-        </div>)}
-      </div>)}
-    </div>
-  </div>
-}
+	const [xTurn, setXTurn] = useState<XorO>("X");
+	const [winner, setWinner] = useState<XorO | undefined | false>(undefined);
+	
+	return (
+		<div className={`flex flex-col items-center gap-10 min-h-screen text-white
+			${winner ? "bg-green-500": ""}
+			${winner === false ? "bg-yellow-500":  ""}
+			${xTurn === "X" && winner === undefined? "bg-red-500": "bg-blue-500"}
+		`}>
+			<div className="flex flex-col items-center gap-10">
+				<div className="font-bold text-2xl mt-10">Tic Tac Toe</div>
+					<TictactoBoard xTurn={xTurn} setXTurn={setXTurn} setWinner={setWinner} winner={winner} boardSize={3} />
+				</div>
+			</div>
+  	);
+};
