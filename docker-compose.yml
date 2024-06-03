@@ -35,10 +35,10 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "2000:2000"
+      - "4000:4000"
     volumes:
       - .:/code
     env_file:
       - ./server/.env  
-    command: npm run dev
+    command: npm start
 

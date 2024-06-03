@@ -1,4 +1,24 @@
 
+## build
+- Make sure you have **docker** installed
+- `docker-compose build`
+- `docker-compsoe up -d`
+
+## my choices
+- backend I used `Koa` for ease of set up 
+- frontend I used some `dasiyui` styling for speed
+- database I used `postgresql` definitly overkill for this usecase
+
+## stuff Id add if spent more time
+- better handling and messaging
+- full test coverage
+- users - input names to store in db would allow more stats like a leauge table
+- better ui, use icons for X/O's / responsiveness /  genrally better desgin
+- security on backend
+- single player 
+- online play
+
+
 # Tic-Tac-Toe
 The below problems are to allow us a glimpse into your problem solving ability, style and current skill set. Please do problem 1, and optionally problem 2 or 3 depending on where you are most comfortable. We expect this test to take 2-3 hours, if you find yourself spending more than this do not aim to solve all 3 problems! We will not be judging based on number of problems completed only the style and thought process.
 
